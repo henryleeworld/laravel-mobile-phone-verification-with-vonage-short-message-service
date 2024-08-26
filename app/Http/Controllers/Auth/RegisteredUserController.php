@@ -9,7 +9,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -41,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'mobile_number' => $request->mobile_number,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         event(new Registered($user));
