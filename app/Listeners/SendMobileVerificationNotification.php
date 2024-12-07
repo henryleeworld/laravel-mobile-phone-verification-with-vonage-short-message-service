@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use Twilio\Rest\Client;
 use App\Interfaces\MustVerifyMobile;
 use Illuminate\Auth\Events\Registered;
-use Twilio\Exceptions\TwilioException;
 use Twilio\Exceptions\ConfigurationException;
+use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Client;
 
 class SendMobileVerificationNotification
 {

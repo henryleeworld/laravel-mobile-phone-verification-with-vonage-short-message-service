@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
@@ -15,7 +14,7 @@ class VerifyMobileController extends Controller
     public function __invoke(Request $request)
     {
         //Redirect user to dashboard if mobile already verified
-        if ($request->user()->hasVerifiedMobile()) return redirect()->to(RouteServiceProvider::HOME);
+        if ($request->user()->hasVerifiedMobile()) return redirect(route('dashboard', absolute: false));
 
         $request->validate([
             'code' => ['required', 'numeric'],
@@ -30,7 +29,7 @@ class VerifyMobileController extends Controller
                 return back()->withErrors(['error' => __('mobile.expired')]);
             }else {
                 $request->user()->markMobileAsVerified();
-                return redirect()->to(RouteServiceProvider::HOME)->with(['message' => __('mobile.verified')]);
+                return redirect(route('dashboard', absolute: false))->with(['message' => __('mobile.verified')]);
             }
         }
 

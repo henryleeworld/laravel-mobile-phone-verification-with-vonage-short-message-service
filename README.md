@@ -1,4 +1,4 @@
-# Laravel 10 透過 Vonage 簡短訊息服務進行手機號碼認證
+# Laravel 11 透過 Vonage 簡短訊息服務進行手機號碼認證
 
 透過 Vonage 簡短訊息服務應用程式介面（API）發送的一次性認證碼，作為註冊帳號時的手機認證機制。
 
@@ -34,11 +34,11 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/PnFCyHN.png)
+![](https://i.imgur.com/N8ZYdl1.png)
 > 輸入您的手機號碼
 
-![](https://i.imgur.com/n7lR6S7.png)
+![](https://i.imgur.com/QOhDrJJ.png)
 > 確認有接收到簡訊（SMS），驗證碼一律為 6 位數
 
-![](https://i.imgur.com/Zjpy7KA.png)
+![](https://i.imgur.com/2IbHiAs.png)
 > 輸入手機簡訊收到的一次性認證碼進行認證，確認輸入的電話號碼正確無誤方能完成註冊

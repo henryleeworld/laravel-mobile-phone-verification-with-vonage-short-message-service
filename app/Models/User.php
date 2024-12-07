@@ -9,11 +9,10 @@ use App\Traits\MustVerifyMobile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements IMustVerifyMobile
 {
-    use HasApiTokens, HasFactory, MustVerifyMobile, Notifiable;
+    use HasFactory, MustVerifyMobile, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,23 +36,25 @@ class User extends Authenticatable implements IMustVerifyMobile
      * @var array<int, string>
      */
     protected $hidden = [
+        'mobile_verify_code',
         'password',
         'remember_token',
-        'mobile_verify_code',
-        'number_verified_at' => 'datetime',
-        'mobile_verify_code_sent_at' => 'datetime',
-        'mobile_last_attempt_date' => 'datetime'
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'mobile_verify_code_sent_at' => 'datetime',
+            'mobile_last_attempt_date' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
     /**
      * Route notifications for the Vonage channel.
