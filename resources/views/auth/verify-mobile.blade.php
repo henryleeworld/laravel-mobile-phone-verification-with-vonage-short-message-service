@@ -6,7 +6,7 @@
     </div>
 
     <div class="text-sm text-gray-600">
-        {{ __('Please enter the OTP sent to your number:') }} {{ auth()->user()->mobile_number }}
+        {{ __('Please enter the OTP sent to your number: ') . auth()->user()->mobile_number }}
     </div>
 
     <div class="mt-4 flex items-center justify-between">

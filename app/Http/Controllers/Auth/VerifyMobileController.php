@@ -11,6 +11,9 @@ use Twilio\Rest\Client;
 
 class VerifyMobileController extends Controller
 {
+    /**
+     * Invoke the controller method.
+     */
     public function __invoke(Request $request)
     {
         //Redirect user to dashboard if mobile already verified
